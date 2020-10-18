@@ -8,17 +8,14 @@ $ cd HelloDL
 ```
 
 ### Step 2: Build docker image
-* Update **USER_NAME** in line 12 of Dockerfile to your name
+* (optional) Update **USER_NAME** in line 12 of Dockerfile to your user name
+* Start build docker image
 ```
 $ docker build -t hello-dl .
 ```
 
 ### Step 3: Create docker container
-* Go back to parent folder
-```
-$ cd ..
-```
-* Start docker container
+* Start create docker container based on the built image
 ```
 $ docker run -it --gpus all --rm \
     --user $(id -u):$(id -g) \
@@ -34,3 +31,4 @@ $ gpustat
 ```
 $ python main.py
 ```
+* **99.54%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
