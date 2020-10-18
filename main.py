@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"  # set gpu device
 import argparse
 import numpy as np
 import torch
@@ -10,12 +11,11 @@ from torch.optim import lr_scheduler
 
 from model import Net
 from train_eng import net_train
+from test_eng import net_test
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PyTorch MNIST Classification")
-    parser.add_argument("--device_id",        type=str,    default="0",
-                        help="which gpu to use")
     parser.add_argument("--batch_size",       type=int,    default=64,
                         help="input batch size for training (default: 64)")
     parser.add_argument("--test_batch_size",  type=int,    default=1000,
@@ -46,8 +46,6 @@ def set_random_seed(seed):
 if __name__ == "__main__":
     assert torch.cuda.is_available(), "...No available GPU..."
     args = parse_args()
-    # set gpu device
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.device_id
     # ensure reproducible training
     set_random_seed(args.seed)
 
@@ -58,7 +56,7 @@ if __name__ == "__main__":
     # prepare train & test dataset
     transform=transforms.Compose([
         transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,))
+        # transforms.Normalize((0.1307,), (0.3081,))
         ])
     train_dset = datasets.MNIST("../data", train=True, download=True, transform=transform)
     test_dset = datasets.MNIST("../data", train=False, transform=transform)
@@ -74,5 +72,5 @@ if __name__ == "__main__":
     # model training & test
     for epoch in range(1, args.epochs + 1):
         net_train(net, train_loader, optimizer, epoch, args)
-        # net_test(net, test_loader)
+        net_test(net, test_loader)
         scheduler.step()
