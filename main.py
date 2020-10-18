@@ -68,11 +68,11 @@ if __name__ == "__main__":
     test_loader = torch.utils.data.DataLoader(test_dset, **test_kwargs)
 
     # optimizer & scheduling
-    optimizer = optim.SGD(net.parameters(), lr=arg.lr, momentum=0.9, nesterov=True)
+    optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9, nesterov=True)
     scheduler = lr_scheduler.StepLR(optimizer, gamma=0.7, step_size=1)
 
     # model training & test
     for epoch in range(1, args.epochs + 1):
-        net_train(model, train_loader, optimizer, epoch, args)
-        # net_test(model, test_loader)
+        net_train(net, train_loader, optimizer, epoch, args)
+        # net_test(net, test_loader)
         scheduler.step()
