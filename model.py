@@ -34,5 +34,6 @@ class Net(nn.Module):
         out = F.relu(self.fc1(out))
         out = self.dropout1(out)
         out = self.fc2(out)
+        output = F.log_softmax(x, dim=1)
 
         return out
