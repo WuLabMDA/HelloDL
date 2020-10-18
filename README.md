@@ -8,27 +8,27 @@ $ cd HelloDL
 ```
 
 ### Step 2: Build docker image
+* Update **USER_NAME** in line 12 of Dockerfile to your name
 ```
 $ docker build -t hello-dl .
 ```
 
 ### Step 3: Create docker container
+* Go back to parent folder
+```
+$ cd ..
+```
+* Start docker container
 ```
 $ docker run -it --gpus all --rm \
     --user $(id -u):$(id -g) \
-    -v /home/pchen6/Codes/HelloDL:/home/pchen6/HelloDL \
     --name hello hello-dl:latest
 ```
 
 ### Step 4: Run MNIST classification
-* First check whether NVIDIA GPU exist via
+* First check whether NVIDIA GPU exist or not
 ```
-$ nvidia-smi # or
 $ gpustat
-```
-* Enter to the code folder
-```
-$ cd HelloDL
 ```
 * Train the PyTorch DL model
 ```
