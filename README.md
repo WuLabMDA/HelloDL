@@ -23,7 +23,7 @@ $ docker run -it --gpus all --rm \
 ```
 
 ### Step 4: Run MNIST classification
-* First check whether NVIDIA GPU exist or not
+* (optional) Check GPU available or not
 ```
 $ gpustat
 ```
