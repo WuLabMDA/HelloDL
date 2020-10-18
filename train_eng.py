@@ -17,5 +17,5 @@ def net_train(model, loader, optimizer, epoch, args):
 
         if batch_idx % args.log_interval == 0:
             print("Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(
-                epoch, batch_idx * len(data), len(loader.dataset),
+                epoch, batch_idx * len(images), len(loader.dataset),
                 100. * batch_idx / len(loader), loss.item()))
