@@ -31,4 +31,4 @@ $ gpustat
 ```
 $ python main.py
 ```
-* **99.54%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
+* **99.44%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
