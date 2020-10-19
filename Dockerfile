@@ -1,15 +1,14 @@
 ARG CUDA_VERSION="10.0"
-
 FROM nvidia/cuda:${CUDA_VERSION}-base-ubuntu18.04
-
 MAINTAINER pingjunchen <pingjunchen@ieee.org>
+ARG USER_NAME="pchen6"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential curl sudo wget vim \
   && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user and switch to it
-ARG USER_NAME="pchen6"
+
 RUN adduser --disabled-password --gecos '' --shell /bin/bash ${USER_NAME}
 RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USER_NAME}
 USER ${USER_NAME}
