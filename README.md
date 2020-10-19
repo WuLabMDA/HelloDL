@@ -8,7 +8,7 @@ $ cd HelloDL
 ```
 
 ### Step 2: Build docker image
-* (optional) Update **USER_NAME** in line 12 of Dockerfile to your user name
+* (optional) Update **USER_NAME** in line 4 of Dockerfile to your user name
 * Start build docker image
 ```
 $ docker build -t hello-dl .
