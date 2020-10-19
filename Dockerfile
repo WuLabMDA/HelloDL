@@ -1,4 +1,4 @@
-ARG CUDA_VERSION="10.0"
+ARG CUDA_VERSION="10.2"
 FROM nvidia/cuda:${CUDA_VERSION}-base-ubuntu18.04
 MAINTAINER pingjunchen <pingjunchen@ieee.org>
 ARG USER_NAME="pchen6"
