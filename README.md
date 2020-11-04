@@ -8,7 +8,7 @@ $ cd HelloDL
 ```
 
 ### Step 2: Build docker image
-* (optional) Update **USER_NAME** in line 4 of Dockerfile to your user name
+* (optional) Update **USER_NAME** in line 3 of Dockerfile to your user name
 * Start build docker image
 ```
 $ docker build -t hello-dl .
@@ -31,4 +31,4 @@ $ gpustat
 ```
 $ python main.py
 ```
-* **99.44%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
+* **99.52%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
