@@ -1,5 +1,4 @@
-ARG CUDA_VERSION="10.2"
-FROM nvidia/cuda:${CUDA_VERSION}-base-ubuntu18.04
+FROM nvidia/cuda:11.0-base-ubuntu18.04
 MAINTAINER pingjunchen <pingjunchen@ieee.org>
 ARG USER_NAME="pchen6"
 
@@ -34,7 +33,7 @@ ENV PATH=$CONDA_PREFIX/bin:$PATH
 RUN pip install numpy==1.19.2
 RUN pip install gpustat==0.6.0
 ## Install pytorch
-RUN conda install pytorch torchvision cudatoolkit=${CUDA_VERSION} -c pytorch
+RUN conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
 
 WORKDIR /home/${USER_NAME}/HelloDL
 ADD *.py /home/${USER_NAME}/HelloDL/
