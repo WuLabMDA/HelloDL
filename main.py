@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"  # set gpu device
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"  # set gpu device
 import argparse
 import numpy as np
 import torch
