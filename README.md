@@ -27,6 +27,8 @@ $ docker run -it --gpus all --rm \
 ```
 $ gpustat
 ```
+* (optional) Set the GPU to use in line 4 of main.py based on GPU availability
+
 * Train the PyTorch DL model
 ```
 $ python main.py
