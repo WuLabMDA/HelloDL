@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user and switch to it
-
 RUN adduser --disabled-password --gecos '' --shell /bin/bash ${USER_NAME}
 RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USER_NAME}
 USER ${USER_NAME}
@@ -30,10 +29,9 @@ ENV PATH=$CONDA_PREFIX/bin:$PATH
 
 # Python packages installation
 ## Using pip
-RUN pip install numpy==1.19.2
-RUN pip install gpustat==0.6.0
+RUN pip install numpy==1.19.2 gpustat==0.6.0
 ## Install pytorch
 RUN conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
 
-WORKDIR /home/${USER_NAME}/HelloDL
 ADD *.py /home/${USER_NAME}/HelloDL/
+WORKDIR /home/${USER_NAME}/HelloDL
