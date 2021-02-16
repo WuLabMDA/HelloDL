@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # set gpu device
 import argparse
 import numpy as np
 import torch
@@ -16,18 +15,13 @@ from test_eng import net_test
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PyTorch MNIST Classification")
-    parser.add_argument("--batch_size",       type=int,    default=64,
-                        help="input batch size for training (default: 64)")
-    parser.add_argument("--test_batch_size",  type=int,    default=1000,
-                        help="input batch size for testing (default: 1000)")
-    parser.add_argument("--lr",               type=float,  default=0.01,
-                        help="learning rate (default: 0.01)")
-    parser.add_argument("--epochs",           type=int,    default=10,
-                        help="number of epochs to train (default: 10)")
-    parser.add_argument("--log_interval",     type=int,    default=10,
-                        help="how many batches to wait before logging training status")
-    parser.add_argument("--seed",             type=int,    default=1234,
-                        help="random seed (default: 1234)")
+    parser.add_argument("--gpu",              type=str,    default="0",    help="the gpu device to use (default: 0)")
+    parser.add_argument("--batch_size",       type=int,    default=64,     help="input batch size for training (default: 64)")
+    parser.add_argument("--test_batch_size",  type=int,    default=1000,   help="input batch size for testing (default: 1000)")
+    parser.add_argument("--lr",               type=float,  default=0.01,   help="learning rate (default: 0.01)")
+    parser.add_argument("--epochs",           type=int,    default=10,     help="number of epochs to train (default: 10)")
+    parser.add_argument("--log_interval",     type=int,    default=10,     help="how many batches to wait before logging training status")
+    parser.add_argument("--seed",             type=int,    default=1234,   help="random seed (default: 1234)")
 
     args = parser.parse_args()
     return args
@@ -48,6 +42,7 @@ if __name__ == "__main__":
     args = parse_args()
     # ensure reproducible training
     set_random_seed(args.seed)
+    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 
     # create model object
     net = Net()
