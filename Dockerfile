@@ -1,6 +1,6 @@
-FROM nvidia/cuda:11.0-base-ubuntu18.04
+FROM nvidia/cuda:10.1-base-ubuntu18.04
 MAINTAINER pingjunchen <pingjunchen@ieee.org>
-ARG USER_NAME="hello"
+ARG USER_NAME="pchen6"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential curl sudo wget vim \
@@ -31,7 +31,4 @@ ENV PATH=$CONDA_PREFIX/bin:$PATH
 ## Using pip
 RUN pip install numpy==1.19.2 gpustat==0.6.0
 ## Install pytorch
-RUN conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
-
-ADD *.py /home/${USER_NAME}/HelloDL/
-WORKDIR /home/${USER_NAME}/HelloDL
+RUN conda install pytorch torchvision torchaudio cudatoolkit=10.1 -c pytorch
