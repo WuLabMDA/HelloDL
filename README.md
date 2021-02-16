@@ -8,7 +8,6 @@ $ cd HelloDL
 ```
 
 ### Step 2: Build docker image
-* (optional) Update **USER_NAME** in line 3 of Dockerfile to your user name
 * Start build docker image
 ```
 $ docker build -t hello-dl .
@@ -17,8 +16,7 @@ $ docker build -t hello-dl .
 ### Step 3: Create docker container
 * Start create docker container based on the built image
 ```
-$ docker run -it --gpus all --rm \
-    --user $(id -u):$(id -g) \
+$ docker run -it --gpus all --rm --user $(id -u):$(id -g) \
     --name hello hello-dl:latest
 ```
 
@@ -27,7 +25,6 @@ $ docker run -it --gpus all --rm \
 ```
 $ gpustat
 ```
-* (optional) Set the GPU to use in line 4 of main.py based on GPU availability
 
 * Train the PyTorch DL model
 ```
