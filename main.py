@@ -53,8 +53,8 @@ if __name__ == "__main__":
         transforms.ToTensor(),
         # transforms.Normalize((0.1307,), (0.3081,))
         ])
-    train_dset = datasets.MNIST("../data", train=True, download=True, transform=transform)
-    test_dset = datasets.MNIST("../data", train=False, transform=transform)
+    train_dset = datasets.MNIST("./data", train=True, download=True, transform=transform)
+    test_dset = datasets.MNIST("./data", train=False, transform=transform)
     train_kwargs = {"batch_size": args.batch_size, "num_workers": 4, "pin_memory": True, "shuffle": True}
     test_kwargs = {"batch_size": args.test_batch_size, "num_workers": 4, "pin_memory": True, "shuffle": False}
     train_loader = torch.utils.data.DataLoader(train_dset,**train_kwargs)
