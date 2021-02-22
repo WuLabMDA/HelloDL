@@ -1,0 +1,19 @@
+#BSUB -J hello
+#BSUB -W 03:00
+#BSUB -o /rsrch3/home/imag_phy-rsrch/pchen6/Logs
+#BSUB -e /rsrch3/home/imag_phy-rsrch/pchen6/Logs
+#BSUB -cwd /rsrch3/home/imag_phy-rsrch/pchen6
+#BSUB -q gpu
+#BSUB -gpu num=1:gmem=16
+#BSUB -n 10   # Number of CPUs is number of GPUs * 10
+#BSUB -M 32
+#BSUB -R rusage[mem=32]
+#BSUB -B
+#BSUB -N
+#BSUB -u pchen6@mdanderson.org
+
+echo $(hostname)
+module load singularity/3.5.2
+module load cuda10.1/toolkit/10.1.243
+singularity exec --nv -B /rsrch3/home/imag_phy-rsrch/pchen6/Codes/HelloDL:/mnt \
+/rsrch3/home/imag_phy-rsrch/pchen6/Singularity/hello.sif python /mnt/main.py
