@@ -3,7 +3,7 @@ Run the PyTorch MNIST classification with Docker utilizing GPU
 
 ### Step 1: Clone the repo
 ```
-$ cd $HOME
+$ cd ${HOME}
 $ git clone https://github.com/WuLabMDA/HelloDL.git
 $ cd HelloDL
 ```
