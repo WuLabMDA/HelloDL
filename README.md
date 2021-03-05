@@ -17,8 +17,9 @@ $ docker build -t hello-dl .
 ### Step 3: Create docker container
 * Start create docker container based on the built image
 ```
+$ DOCKER_CODE_DIR=/App/HelloDL
 $ docker run -it --gpus all --rm --user $(id -u):$(id -g) \
-    -v /home/pchen6/HelloDL:/home/pchen6/HelloDL \
+    -v ${PWD}:${DOCKER_CODE_DIR} \
     --name hello hello-dl:latest
 ```
 
@@ -30,6 +31,8 @@ $ gpustat
 
 * Train the PyTorch DL model
 ```
+$ DOCKER_CODE_DIR=/App/HelloDL
+$ cd ${DOCKER_CODE_DIR}
 $ python main.py
 ```
-* **99.54%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
+* **99.50%** accuracy can be obtained for **mnist-classification** after training for 10 epochs.
