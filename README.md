@@ -19,7 +19,7 @@ $ docker build -t hellodl .
 ```
 $ DOCKER_CODE_DIR=/App/HelloDL
 $ docker run -it --gpus all --rm --user $(id -u):$(id -g) \
-    -v ${PWD}:${DOCKER_CODE_DIR} \
+    -v ${PWD}:${DOCKER_CODE_DIR} -v ${PWD}/data:/Data \
     --name hello hellodl:latest
 ```
 
