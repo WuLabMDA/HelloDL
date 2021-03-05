@@ -1,5 +1,9 @@
 # Folders
 data/
+Data/
+
+# Files
+*.sif
 
 ## Byte-compiled / optimized / DLL files
 __pycache__/
