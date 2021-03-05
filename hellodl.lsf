@@ -1,4 +1,4 @@
-#BSUB -J hello
+#BSUB -J hellodl
 #BSUB -W 03:00
 #BSUB -o /rsrch3/home/imag_phy-rsrch/pchen6/Logs
 #BSUB -e /rsrch3/home/imag_phy-rsrch/pchen6/Logs
@@ -15,5 +15,6 @@
 echo $(hostname)
 module load singularity/3.5.2
 module load cuda10.1/toolkit/10.1.243
-singularity exec --nv --bind /rsrch3/home/imag_phy-rsrch/pchen6/Codes/HelloDL:/mnt/HelloDL\
-/rsrch3/home/imag_phy-rsrch/pchen6/Singularity/hellodl.sif python /mnt/HelloDL/main.py
+singularity run --nv --bind /rsrch3/home/imag_phy-rsrch/pchen6/Codes/HelloDL:/mnt/HelloDL --bind /rsrch3/home/imag_phy-rsrch/pchen6/Data:/Data \
+  /rsrch3/home/imag_phy-rsrch/pchen6/Singularity/hellodl.sif python /mnt/HelloDL/main.py
+echo "Finish!!!"
