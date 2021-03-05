@@ -11,7 +11,7 @@ $ cd HelloDL
 ### Step 2: Build docker image
 * Start build docker image
 ```
-$ docker build -t hello-dl .
+$ docker build -t hellodl .
 ```
 
 ### Step 3: Create docker container
@@ -20,7 +20,7 @@ $ docker build -t hello-dl .
 $ DOCKER_CODE_DIR=/App/HelloDL
 $ docker run -it --gpus all --rm --user $(id -u):$(id -g) \
     -v ${PWD}:${DOCKER_CODE_DIR} \
-    --name hello hello-dl:latest
+    --name hello hellodl:latest
 ```
 
 ### Step 4: Run MNIST classification
