@@ -15,8 +15,5 @@
 echo $(hostname)
 module load singularity/3.5.2
 module load cuda10.1/toolkit/10.1.243
-CLUSTER_CODE_DIR=${PWD}/Codes/HelloDL
-mkdir -p ${CLUSTER_CODE_DIR}
-cd  ${CLUSTER_CODE_DIR}
-singularity exec --nv --bind /rsrch3/home/imag_phy-rsrch/pchen6/Codes/HelloDL:${CLUSTER_CODE_DIR}\
-/rsrch3/home/imag_phy-rsrch/pchen6/Singularity/hello.sif python main.py
+singularity exec --nv --bind /rsrch3/home/imag_phy-rsrch/pchen6/Codes/HelloDL:/mnt/HelloDL\
+/rsrch3/home/imag_phy-rsrch/pchen6/Singularity/hellodl.sif python /mnt/HelloDL/main.py
