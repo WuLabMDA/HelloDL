@@ -7,6 +7,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
 
+# Create /Data directory for data mapping
+WORKDIR /Data
+RUN chmod 777 /Data
+
+
 # Install Miniconda
 WORKDIR /App
 RUN chmod 777 /App
@@ -27,6 +32,8 @@ ENV PATH=$CONDA_PREFIX/bin:$PATH
 RUN pip install requests==2.25.1 numpy==1.19.2 gpustat==0.6.0
 ## Install pytorch
 RUN conda install pytorch torchvision torchaudio cudatoolkit=10.1 -c pytorch
+
+
 
 
 ## Create a non-root user and switch to it
